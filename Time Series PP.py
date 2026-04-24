@@ -25,6 +25,7 @@ def simple_test_net():
     b5 = pp.create_bus(net, 20)
     b6 = pp.create_bus(net, 0.4)
     b7 = pp.create_bus(net, 20)
+    b8_mt = pp.create_bus(net, 20)
     b8 = pp.create_bus(net, 0.4)
     b9 = pp.create_bus(net, 0.4)
 
@@ -32,8 +33,11 @@ def simple_test_net():
     pp.create_line(net, b0, b1, 10, "48-AL1/8-ST1A 110.0")
     pp.create_transformer(net, b1, b2, "25 MVA 110/20 kV")
     pp.create_line(net, b2, b4, 2, "305-AL1/39-ST1A 110.0")
+    
+    pp.create_line(net, b4, b8_mt, 2.0, "184-AL1/30-ST1A 20.0")
+    pp.create_transformer(net, b8_mt, b8, "0.25 MVA 20/0.4 kV")
+
     pp.create_transformer(net, b4, b6, "0.25 MVA 20/0.4 kV")
-    pp.create_line(net, b6, b8, 0.2, "184-AL1/30-ST1A 20.0")
     pp.create_transformer(net, b1, b3, "25 MVA 110/20 kV")
     pp.create_line(net, b3, b5, 2, "243-AL1/39-ST1A 20.0")
     pp.create_line(net, b5, b7, 2, "184-AL1/30-ST1A 20.0")
